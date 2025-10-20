@@ -263,6 +263,23 @@ const io = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{ sticky.style.display = entry.isIntersecting ? 'none' : 'flex'; });
 });
 io.observe(hero);
+
+/* === TOGGLE === (poner antes de </body>) */
+(() => {
+  const t = document.getElementById('navToggle');
+  const m = document.getElementById('navMenu');
+  const b = document.getElementById('navBackdrop');
+
+  const open = () => { t.classList.add('is-open'); m.classList.add('open'); b.classList.add('show'); t.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; };
+  const close = () => { t.classList.remove('is-open'); m.classList.remove('open'); b.classList.remove('show'); t.setAttribute('aria-expanded','false'); document.body.style.overflow=''; };
+
+  t.addEventListener('click', () => (m.classList.contains('open') ? close() : open()));
+  b.addEventListener('click', close);
+  window.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  m.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+})();
+
+
 </script>
 
 <!-- JSON-LD placeholder: fill event data -->
