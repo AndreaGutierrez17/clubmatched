@@ -79,3 +79,44 @@ hr.sep { border:0; border-top:1px solid rgba(0,0,0,.08); margin: 24px 0; }
 .sticky-cta { position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%); background: var(--cm-olive); color:#fff;
   padding: 12px 18px; border-radius: 999px; box-shadow: 0 10px 30px rgba(0,0,0,.2); display:none; z-index: 60; }
 @media (max-width: 720px) { .sticky-cta { display:flex; } }
+
+/* === MOBILE FIXES (<= 768px) === */
+@media (max-width: 768px){
+  .container{width:min(96%, 720px); padding:0 14px;}
+  .hero{min-height:68vh; background-position:center top;}
+  .hero__inner{padding:56px 16px;}
+  .hero h1{font-size:clamp(28px, 9vw, 40px); line-height:1.05}
+  .hero p.lead{font-size:clamp(14px, 3.8vw, 18px); max-width: 95%}
+  .cta-row{gap:10px}
+  .btn, .nav-actions a.btn{padding:12px 16px; font-size:14px}
+
+  header.nav .nav-inner{align-items:flex-start}
+  .nav-actions{display:flex; gap:8px; margin-left:auto}
+  .nav-actions a.btn{border-width:1.5px}
+
+  .split{grid-template-columns:1fr; gap:20px}
+  .event-card{grid-template-columns:1fr; padding:18px}
+
+  .icon-grid{grid-template-columns:1fr; gap:18px}
+  .icon-card{padding:18px}
+
+  .tiers{grid-template-columns:1fr; gap:16px}
+  .tier{padding:18px}
+  .ribbon{top:10px; right: -6px}
+
+  .sponsors{grid-template-columns:repeat(2,1fr); gap:16px}
+  .sponsors img{max-height:42px}
+
+  .form-wrap, form{width:100%}
+  .grid-2{grid-template-columns:1fr; gap:12px}
+  input,select,textarea{font-size:16px; padding:12px 12px} /* evita zoom iOS */
+}
+
+/* === SMALL PHONES (<= 380px) === */
+@media (max-width: 380px){
+  .hero{min-height:62vh}
+  .hero h1{font-size:clamp(24px, 9.6vw, 34px)}
+  .btn, .nav-actions a.btn{padding:10px 14px; font-size:13px}
+}
+
+.notice, .partners .notice { display:none; }
