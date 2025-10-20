@@ -120,3 +120,47 @@ hr.sep { border:0; border-top:1px solid rgba(0,0,0,.08); margin: 24px 0; }
 }
 
 .notice, .partners .notice { display:none; }
+
+/* OFF-CANVAS NAV (sin cambiar HTML) */
+@media (max-width: 900px){
+  .nav-inner { gap: 8px; }
+  .brand img{ height:32px; }
+
+  /* panel */
+  .nav-actions{
+    position: fixed; top:0; right:0; height:100dvh; width:min(84vw,320px);
+    background:#fff; box-shadow:-24px 0 48px rgba(0,0,0,.18);
+    padding:84px 18px 18px; display:flex; flex-direction:column; gap:12px;
+    transform: translateX(100%); transition: transform .22s ease; z-index: 1001;
+  }
+  .nav-actions.is-open{ transform:none; }
+  .nav-actions .btn{ width:100%; justify-content:center; padding:14px 18px; font-size:16px; }
+
+  /* backdrop */
+  .cm-nav-backdrop{
+    position:fixed; inset:0; background:rgba(0,0,0,.35); backdrop-filter:blur(2px);
+    opacity:0; pointer-events:none; transition:opacity .2s; z-index:1000;
+  }
+  .cm-nav-backdrop.show{ opacity:1; pointer-events:auto; }
+
+  /* botón hamburguesa (inyectado) */
+  .cm-hamburger{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:42px; height:42px; border:1.5px solid var(--cm-gold); border-radius:999px;
+    background:#fff; cursor:pointer;
+  }
+  .cm-hamburger i{ position:relative; width:18px; height:2px; background:var(--cm-olive); }
+  .cm-hamburger i::before,.cm-hamburger i::after{
+    content:""; position:absolute; left:0; width:18px; height:2px; background:var(--cm-olive); transition:.2s;
+  }
+  .cm-hamburger i::before{ transform:translateY(-6px); }
+  .cm-hamburger i::after{ transform:translateY(6px); }
+  .cm-hamburger.is-open i{ background:transparent; }
+  .cm-hamburger.is-open i::before{ transform:rotate(45deg); }
+  .cm-hamburger.is-open i::after{ transform:rotate(-45deg); }
+}
+
+/* opcional: en escritorio oculto (el botón solo en móvil) */
+@media (min-width: 901px){
+  .cm-hamburger, .cm-nav-backdrop{ display:none !important; }
+}
